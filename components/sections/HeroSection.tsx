@@ -73,8 +73,8 @@ export function HeroSection() {
                 : 'opacity-0 translate-x-8'
             }`}
           >
-            <div className="relative">
-              <div className="flex items-center justify-center space-x-4 perspective-1000">
+            <div className="relative flex items-center justify-end">
+              <div className="flex items-end justify-center gap-2 sm:gap-3 lg:gap-4 perspective-1000">
                 <VideoCard
                   platform="YouTube Shorts"
                   color="from-orange-400 to-orange-600"
@@ -86,7 +86,7 @@ export function HeroSection() {
                   platform="TikTok"
                   color="from-purple-400 to-purple-600"
                   delay={200}
-                  caption="export ready"
+                  caption="short ready"
                   rotation="0"
                 />
                 <VideoCard
@@ -132,21 +132,23 @@ function VideoCard({ platform, color, delay, caption, rotation }: VideoCardProps
       }}
     >
       <div
-        className={`w-48 sm:w-56 h-80 sm:h-96 rounded-3xl bg-gradient-to-br ${color} p-1 shadow-2xl`}
+        className={`w-40 sm:w-48 lg:w-52 h-72 sm:h-80 lg:h-96 rounded-3xl bg-gradient-to-br ${color} p-1.5 shadow-2xl`}
       >
-        <div className="w-full h-full rounded-3xl bg-gradient-to-br from-purple-300 to-blue-300 relative overflow-hidden">
-          <div className="absolute top-4 left-4 right-4">
-            <div className="text-xs font-semibold text-white bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full inline-block">
+        <div className="w-full h-full rounded-3xl relative overflow-hidden flex flex-col">
+          <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/5 to-transparent" />
+
+          <div className="relative flex-1 flex items-center justify-center">
+            <div className="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 bg-white/10 backdrop-blur-sm rounded-2xl" />
+          </div>
+
+          <div className="absolute top-3 sm:top-4 left-3 sm:left-4 right-3 sm:right-4">
+            <div className="text-xs sm:text-sm font-semibold text-white bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full inline-block">
               {platform}
             </div>
           </div>
 
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-32 h-32 bg-white/20 backdrop-blur-sm rounded-2xl" />
-          </div>
-
-          <div className="absolute bottom-4 left-4 right-4">
-            <p className="text-xs text-white font-medium leading-relaxed">
+          <div className="relative mt-auto pb-4 sm:pb-5 px-3 sm:px-4 bg-gradient-to-t from-black/60 to-transparent pt-8">
+            <p className="text-xs sm:text-sm text-white font-medium leading-tight">
               {caption}
             </p>
           </div>
