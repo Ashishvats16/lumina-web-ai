@@ -97,7 +97,6 @@ export function HeroSection() {
                   color="from-purple-400 to-purple-600"
                   delay={200}
                   caption="short ready"
-                  caption="short ready"
                   rotation="0"
                   ZIdxVal="4"
                 />
