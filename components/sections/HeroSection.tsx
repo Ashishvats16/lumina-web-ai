@@ -59,7 +59,7 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 size="lg"
-                className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl px-8 py-6 text-base font-medium shadow-xl shadow-blue-600/20 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-600/30 hover:scale-105"
+                className="w-fit sm:w-fit bg-blue-600 hover:bg-blue-700 text-white rounded-xl px-8 py-6 text-base font-medium shadow-xl shadow-blue-600/20 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-600/30 hover:scale-105"
               >
                 <Sparkles className="w-5 h-5 mr-2" />
                 Transform My Content
@@ -67,7 +67,7 @@ export function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="rounded-xl px-8 py-6 text-base font-medium border-2 hover:bg-gray-50 transition-all duration-300"
+                className="w-fit sm:w-fit rounded-xl px-8 sm:px-4 py-6 text-base font-medium border-2 hover:bg-gray-50 transition-all duration-300"
               >
                 <Play className="w-5 h-5 mr-2" />
                 See how it works
@@ -126,45 +126,6 @@ interface VideoCardProps {
   ZIdxVal: string;
 }
 
-// function VideoCard({
-//   platform,
-//   color,
-//   delay,
-//   caption,
-//   rotation,
-//   ZIdxVal,
-// }: VideoCardProps) {
-//   const [isVisible, setIsVisible] = useState(false);
-
-//   useEffect(() => {
-//     const timer = setTimeout(() => setIsVisible(true), delay);
-//     return () => clearTimeout(timer);
-//   }, [delay]);
-
-//   return (
-//     <div
-//       className={`relative transform transition-all duration-1000 hover:scale-105 hover:rotate-0 ${
-//         isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
-//       }`}
-//       style={{
-//         transform: `rotate(${rotation}deg)`,
-//         transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-//         zIndex: ZIdxVal,
-//       }}
-//     >
-//       <div
-//         className={`w-48 sm:w-56 h-80 sm:h-96 rounded-3xl bg-gradient-to-br ${color} p-1 shadow-2xl`}
-//       >
-//                 <Image src={logo1} alt="Logo" fill className="object-contain" />
-
-
-       
-//       </div>
-//     </div>
-//   );
-// }
-
-
 function VideoCard({
   platform,
   color,
@@ -180,48 +141,19 @@ function VideoCard({
     return () => clearTimeout(timer);
   }, [delay]);
 
-  // Select the logo based on platform (optional)
-  const logoMap: Record<string, any> = {
-    "YouTube Shorts": logo1,
-    TikTok: logo2,
-    "Instagram Reels": logo3,
-  };
-  const logoSrc = logoMap[platform];
-
   return (
     <div
       className={`relative transform transition-all duration-1000 hover:scale-105 hover:rotate-0 ${
         isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
       }`}
       style={{
-        // transform: `rotate(${rotation}deg)`,
-        // transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+        transform: `rotate(${rotation}deg)`,
+        transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
         zIndex: ZIdxVal,
       }}
     >
-      <div
-        className={`w-68  sm:w-64 h-80 sm:h-96 rounded-3xl  p-1 relative`}
-      >
-        {/* Image fills the entire card */}
-        <Image
-          src={logoSrc}
-          alt={`${platform} Logo`}
-          fill
-          className="object-cover rounded-3xl"
-        />
-
-        {/* Overlay content */}
-        <div className="absolute top-4 left-4 right-4">
-          {/* <div className="text-xs font-semibold text-white bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full inline-block">
-            {platform}
-          </div> */}
-        </div>
-
-        <div className="absolute bottom-4 left-4 right-4">
-          {/* <p className="text-xs text-white font-medium leading-relaxed">
-            {caption}
-          </p> */}
-        </div>
+      <div className={`w-48 sm:w-56 h-80 sm:h-96 rounded-3xl p-1`}>
+        <Image src={logo1} alt="Logo" fill className="object-contain" />
       </div>
     </div>
   );
