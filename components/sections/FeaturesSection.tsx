@@ -2,6 +2,14 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Megaphone, TrendingUp, FileText } from 'lucide-react';
+import mic from "../../public/assets/icons/mic.jpg";
+import insight from "../../public/assets/icons/insight.jpg";
+import summarizationIcon from "../../public/assets/icons/summarization.jpg";
+
+import micIcon from "../../public/assets/icons/micIcon.png";
+import insightIcon from "../../public/assets/icons/insight-icon.png";
+import summarizationic from "../../public/assets/icons/summs.png";
+import Image from 'next/image';
 
 export function FeaturesSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -52,31 +60,34 @@ export function FeaturesSection() {
 
         <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
           <FeatureCard
-            icon={<Megaphone className="w-8 h-8" />}
+            icon={micIcon}
             title="Campaign Engine"
             description="Automates campaign creation from video libraries."
             color="bg-gradient-to-br from-yellow-300 to-yellow-500"
-            image="/assets/megaphone.png"
+            image= {"../../public/assets/icons/mic.jpg"}
             delay={0}
             isVisible={isVisible}
+            src={mic}
           />
           <FeatureCard
-            icon={<TrendingUp className="w-8 h-8" />}
+            icon={insightIcon}
             title="Video Insights"
             description="Delivers instant analytics and trend detection."
             color="bg-gradient-to-br from-blue-400 to-blue-600"
             image="/assets/analytics.png"
             delay={200}
             isVisible={isVisible}
+            src={insight}
           />
           <FeatureCard
-            icon={<FileText className="w-8 h-8" />}
+            icon={summarizationic}
             title="Summarization"
             description="Generates clean, AI-powered summaries from transcripts."
             color="bg-gradient-to-br from-blue-500 to-blue-700"
             image="/assets/summary.png"
             delay={400}
             isVisible={isVisible}
+            src={summarizationIcon}
           />
         </div>
       </div>
@@ -85,13 +96,14 @@ export function FeaturesSection() {
 }
 
 interface FeatureCardProps {
-  icon: React.ReactNode;
+  icon: any;
   title: string;
   description: string;
   color: string;
   image: string;
   delay: number;
   isVisible: boolean;
+  src?: any;
 }
 
 function FeatureCard({
@@ -101,6 +113,7 @@ function FeatureCard({
   color,
   delay,
   isVisible,
+  src,
 }: FeatureCardProps) {
   const [animate, setAnimate] = useState(false);
 
@@ -113,7 +126,7 @@ function FeatureCard({
 
   return (
     <div
-      className={`group transition-all duration-1000 ${
+      className={`group transition-all duration-1000 p-8 rounded-3xl shadow-md bg-[#D3E6FF1A] ${
         animate ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
       }`}
     >
@@ -123,11 +136,26 @@ function FeatureCard({
             <div className="w-48 h-48 bg-white/10 backdrop-blur-sm rounded-3xl transform group-hover:scale-110 transition-transform duration-500" />
           </div>
         </div>
+        <Image
+          src={src}
+          alt={"mic"}
+          fill
+          className="object-cover rounded-3xl"
+        />
+
       </div>
 
       <div className="mt-6">
-        <div className="flex items-center space-x-3 mb-3">
-          <div className="text-gray-700">{icon}</div>
+        <div className="flex items-center space-x-3 mb-3 flex-col">
+          <div className="text-gray-700">
+              <Image
+          src={icon}
+          alt={"mic"}
+          // fill
+          height={52}
+          width={52}
+        />
+          </div>
           <h3 className="text-xl font-bold text-gray-900">{title}</h3>
         </div>
         <p className="text-gray-600 leading-relaxed">{description}</p>
