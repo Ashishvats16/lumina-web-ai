@@ -1,138 +1,25 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
-import { Sparkles, Play } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { COLORS } from "@/constants";
-import logo1 from "../../public/assets/icons/card 1.svg";
-import logo2 from "../../public/assets/icons/card 2.svg";
-import logo3 from "../../public/assets/icons/card 3.svg";
-import Image from "next/image";
-
-export function HeroSection() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-  return (
-    <section
-      ref={sectionRef}
-      className="relative pt-32 pb-20 sm:pt-40 sm:pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden"
-    >
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50/30 to-transparent pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto relative">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div
-            className={`transition-all duration-1000 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
-          >
-            <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-700 px-4 py-2  rounded-full text-sm font-medium mb-6 sm:mb-8">
-              <Sparkles className="w-4 h-4" />
-              <span>AI-Powered Video Intelligence</span>
-            </div>
-
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-4 leading-[140%] tracking-[8%] font-poppins font-medium">
-              Your Videos.
-              <br />
-              <span
-                className={`text-transparent bg-clip-text bg-gradient-to-r`}
-                style={{
-                  backgroundImage: `linear-gradient(to right, ${COLORS.gradient.heroText.from}, ${COLORS.gradient.heroText.to})`,
-                }}
-              >
-                Now Smarter
-              </span>
-            </h1>
-            <p className="font-inter font-normal text-lg leading-[120%] tracking-[0.08em] text-gray-600 mb-8 sm:mb-10 max-w-2xl">
-              Upload once — LuminaCore AI generates campaigns, summaries, and
-              insights that make every second of your video searchable,
-              shareable, and monetizable.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                className="w-fit sm:w-fit bg-blue-600 hover:bg-blue-700 text-white rounded-xl px-8 py-6 text-base font-medium shadow-xl shadow-blue-600/20 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-600/30 hover:scale-105"
-              >
-                <Sparkles className="w-5 h-5 mr-2" />
-                Transform My Content
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="w-fit sm:w-fit rounded-xl px-8 sm:px-4 py-6 text-base font-medium border-2 hover:bg-gray-50 transition-all duration-300"
-              >
-                <Play className="w-5 h-5 mr-2" />
-                See how it works
-              </Button>
-            </div>
-          </div>
-
-          <div
-            className={`relative transition-all duration-1000 delay-300 ${
-              isVisible
-                ? "opacity-0100 translate-x-0"
-                : "opacity-0 translate-x-8"
-            }`}
-          >
-            <div className="relative flex items-center justify-end">
-              <div className="flex items-end justify-center perspective-1000 space-x-[-60px] sm:space-x-[-80px]">
-                <VideoCard
-                  platform="YouTube Shorts"
-                  color="from-orange-400 to-orange-600"
-                  delay={0}
-                  caption="Perfectly cut vertical clip"
-                  rotation="-10"
-                  ZIdxVal="5"
-                />
-                <VideoCard
-                  platform="TikTok"
-                  color="from-purple-400 to-purple-600"
-                  delay={200}
-                  caption="short ready"
-                  rotation="0"
-                  ZIdxVal="4"
-                />
-                <VideoCard
-                  platform="Instagram Reels"
-                  color="from-pink-400 to-purple-600"
-                  delay={400}
-                  caption="d & filmed for dpement"
-                  rotation="8"
-                  ZIdxVal="3"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+import { useEffect, useRef, useState } from 'react';
+import { Sparkles, Play } from 'lucide-react';
+import { COLORS } from '@/constants';
 
 interface VideoCardProps {
   platform: string;
-  color: string;
+  gradient: string;
   delay: number;
   caption: string;
   rotation: string;
-  ZIdxVal: string;
+  imageUrl: string;
 }
 
 function VideoCard({
   platform,
-  color,
+  gradient,
   delay,
   caption,
   rotation,
-  ZIdxVal,
+  imageUrl,
 }: VideoCardProps) {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -144,17 +31,124 @@ function VideoCard({
   return (
     <div
       className={`relative transform transition-all duration-1000 hover:scale-105 hover:rotate-0 ${
-        isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
+        isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
       }`}
       style={{
         transform: `rotate(${rotation}deg)`,
-        transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-        zIndex: ZIdxVal,
       }}
     >
-      <div className={`w-48 sm:w-56 h-80 sm:h-96 rounded-3xl p-1`}>
-        <Image src={logo1} alt="Logo" fill className="object-contain" />
+      <div className={`w-36 sm:w-40 md:w-48 lg:w-56 h-56 sm:h-64 md:h-72 lg:h-80 rounded-2xl md:rounded-3xl p-0.5 bg-gradient-to-br ${gradient} shadow-2xl`}>
+        <div className="w-full h-full rounded-2xl md:rounded-3xl overflow-hidden bg-white flex flex-col">
+          <img
+            src={imageUrl}
+            alt={platform}
+            className="w-full h-32 sm:h-36 md:h-44 lg:h-48 object-cover"
+          />
+          <div className="flex-1 p-2.5 sm:p-3 md:p-4 flex flex-col justify-between">
+            <p className="text-xs sm:text-xs md:text-sm font-semibold text-gray-900">{platform}</p>
+            <p className="text-xs text-gray-500 leading-tight text-left">{caption}</p>
+          </div>
+        </div>
       </div>
     </div>
+  );
+}
+
+export default function HeroSection() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative w-full bg-gradient-to-b from-blue-50 to-white px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-28 overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto">
+         <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-700 px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+              <Sparkles className="w-4 h-4 flex-shrink-0" />
+              <span>AI-Powered Video Intelligence</span>
+            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div
+            className={`transition-all duration-1000 order-2 lg:order-1 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            {/* <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-700 px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+              <Sparkles className="w-4 h-4 flex-shrink-0" />
+              <span>AI-Powered Video Intelligence</span>
+            </div> */}
+
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-1 sm:mb-2 leading-tight sm:text-center lg:text-left">
+              Your Videos.
+            </h1>
+            <div className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-tight sm:text-center lg:text-left">
+            <span
+                className={`text-transparent bg-clip-text bg-gradient-to-r`}
+                style={{
+                  backgroundImage: `linear-gradient(to right, ${COLORS.gradient.heroText.from}, ${COLORS.gradient.heroText.to})`,
+                }}
+              >
+                Now Smarter
+              </span>
+            </div>
+
+            <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-md mx-auto lg:mx-0 mb-8 sm:mb-10">
+              Upload once — LuminaCore AI generates campaigns, summaries, and
+              insights that make every second of your video searchable,
+              shareable, and monetizable.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-4 justify-center lg:justify-start">
+              <button className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white text-base font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+                <Sparkles className="w-5 h-5" />
+                Transform My Content
+              </button>
+              <button className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-white border-2 border-gray-300 hover:border-gray-400 text-gray-900 text-base font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2">
+                <Play className="w-5 h-5" />
+                See how it works
+              </button>
+            </div>
+          </div>
+
+          <div
+            className={`relative transition-all duration-1000 delay-300 order-1 lg:order-2 ${
+              isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+            }`}
+          >
+            <div className="flex items-end justify-center lg:justify-end gap-2 sm:gap-3 md:gap-4 lg:gap-6 -space-x-12 sm:-space-x-16 md:-space-x-20 lg:-space-x-28 perspective">
+              <VideoCard
+                platform="YouTube Shorts"
+                gradient="from-orange-400 via-orange-500 to-orange-600"
+                delay={0}
+                caption="Perfectly cut vertical clip"
+                rotation="-12"
+                imageUrl="https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=2"
+              />
+              <VideoCard
+                platform="TikTok"
+                gradient="from-pink-400 via-pink-500 to-purple-600"
+                delay={150}
+                caption="Short ready"
+                rotation="0"
+                imageUrl="https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=2"
+              />
+              <VideoCard
+                platform="Instagram Reels"
+                gradient="from-purple-500 via-purple-600 to-purple-700"
+                delay={300}
+                caption="& tuned for alignment"
+                rotation="10"
+                imageUrl="https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=2"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
