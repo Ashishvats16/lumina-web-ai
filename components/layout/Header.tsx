@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ChevronDown, Sparkles, Menu, X } from 'lucide-react';
-
+import lumaLogo from '../../public/assets/icons/luma-logo.jpg'; // adjust path if needed
+import Image from 'next/image';
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -46,10 +47,25 @@ export function Header() {
             </button>
 
             <div className="flex items-center space-x-2">
-              <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
-              <span className="text-base sm:text-lg lg:text-xl font-bold text-gray-900">
+              {/* <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" /> */}
+           <Image
+  src={lumaLogo}
+  alt="LuminaCore AI Logo"
+  width={128}
+  height={48}
+  className="
+    h-auto 
+    w-24 sm:w-32 md:w-40 lg:w-48 
+    object-contain 
+    transition-transform duration-300 
+    hover:scale-105
+  "
+  priority
+/>
+
+              {/* <span className="text-base sm:text-lg lg:text-xl font-bold text-gray-900">
                 LuminaCore AI
-              </span>
+              </span> */}
             </div>
 
             <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">

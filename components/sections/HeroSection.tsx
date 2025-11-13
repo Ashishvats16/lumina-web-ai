@@ -69,7 +69,7 @@ export default function HeroSection() {
     >
       <div className="max-w-7xl mx-auto">
          <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-700 px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
-              <Sparkles className="w-4 h-4 flex-shrink-0" />
+              {/* <Sparkles className="w-4 h-4 flex-shrink-0" /> */}
               <span>AI-Powered Video Intelligence</span>
             </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -105,8 +105,10 @@ export default function HeroSection() {
 
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-4 justify-center lg:justify-start">
               <button className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white text-base font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
-                <Sparkles className="w-5 h-5" />
-                Transform My Content
+                {/* <Sparkles className="w-5 h-5" /> */}
+                {/* Imag  */}
+                
+                Upload Videos
               </button>
               <button className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-white border-2 border-gray-300 hover:border-gray-400 text-gray-900 text-base font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2">
                 <Play className="w-5 h-5" />
