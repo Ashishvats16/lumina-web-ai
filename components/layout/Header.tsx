@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ChevronDown, Sparkles, Menu, X } from 'lucide-react';
-import lumaLogo from '../../public/assets/icons/luma-logo.jpg'; // adjust path if needed
+import lumaLogo from '../../public/assets/icons/luminaLogo.jpg'; // adjust path if needed
 import Image from 'next/image';
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -47,25 +47,18 @@ export function Header() {
             </button>
 
             <div className="flex items-center space-x-2">
-              {/* <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" /> */}
-           <Image
-  src={lumaLogo}
-  alt="LuminaCore AI Logo"
-  width={128}
-  height={48}
-  className="
-    h-auto 
-    w-24 sm:w-32 md:w-40 lg:w-48 
-    object-contain 
-    transition-transform duration-300 
-    hover:scale-105
-  "
-  priority
-/>
+              <Image
+                src={lumaLogo}
+                alt="LuminaCore AI Logo"
+                width={120}
+                height={40}
+                className="h-8 sm:h-10 lg:h-12 w-auto object-contain hover:scale-105"
+                priority
+              />
+                         <span className="text-lg sm:text-xl font-bold text-gray-900">
+              LuminaCore AI
+            </span>
 
-              {/* <span className="text-base sm:text-lg lg:text-xl font-bold text-gray-900">
-                LuminaCore AI
-              </span> */}
             </div>
 
             <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
