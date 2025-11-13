@@ -36,7 +36,7 @@ export default function PricingTiers() {
   ];
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_center,_rgba(59,130,246,0.25),_transparent_70%),linear-gradient(to_bottom,_white,_rgba(239,246,255,0.5),_white)] py-16 px-4 sm:px-6 lg:px-8">
+    <div className=" bg-[radial-gradient(circle_at_center,_rgba(59,130,246,0.25),_transparent_70%),linear-gradient(to_bottom,_white,_rgba(239,246,255,0.5),_white)] py-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-5xl sm:text-6xl font-bold text-black mb-4">

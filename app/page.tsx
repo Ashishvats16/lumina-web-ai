@@ -1,11 +1,11 @@
 'use client';
 
 import { FeaturesSection } from '@/components/sections/FeaturesSection';
-import { Header } from '@/components/layout/Header';
 import PricingTiers from '@/components/sections/PricingSection';
 import Footer from '@/components/sections/FooterSection';
 import HeroSection from '@/components/sections/HeroSection';
 import CTASection from '@/components/sections/HeroCTASection';
+import { Header } from '@/components/layout/Header';
 
 export default function Home() {
   return (

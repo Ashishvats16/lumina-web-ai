@@ -9,10 +9,10 @@ import rightimg from "@/public/assets/icons/card 2.svg"; // adjust path if neede
 
 export default function HeroCTA() {
   return (
-    <div className="relative w-full min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-8 lg:py-12">
-      <div className="w-full max-w-5xl mx-auto">
+    <div className="relative w-full bg-white flex items-center justify-center px-4 sm:px-6 lg:px-8 py-32 sm:py-8 lg:py-32">
+      <div className="w-full max-w-6xl mx-auto">
        
-        <div className="relative pb-12">
+        <div className="relative">
                 <div className="mb-2 sm:mb-16 left-[40%] absolute -top-10 z-10">
                 <div className="inline-block relative">
                   <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border-4 sm:border-6 border-white">
@@ -28,26 +28,10 @@ export default function HeroCTA() {
                   </div>
                 </div>
               </div>
-          <div className="bg-white rounded-[2rem] sm:rounded-[2.5rem] shadow-2xl px-6 sm:px-8 lg:px-16 pb-12">
+          <div className="bg-[#DDDDDF33] rounded-[2rem] sm:rounded-[2.5rem] shadow-[1px_2px_4px_4px_rgba(0,0,0,0.05),_0px_-2px_2px_0px_rgba(0,0,0,0.1)_inset] backdrop-blur-[10px] px-2 sm:px-4 lg:px-6"
+>
          
             <div className="flex flex-col items-center justify-center relative z-10 top-20 sm:top-40 lg:top-40">
-              {/* Hero Image */}
-              {/* <div className="mb-2 sm:mb-2">
-                <div className="inline-block relative">
-                  <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border-4 sm:border-6 border-white">
-                    <Image
-                      src={vidImg}
-                      alt="Hero content"
-                      className="w-32 sm:w-40 lg:w-48 h-20 sm:h-24 lg:h-28 object-cover"
-                    />
-                  </div>
-                  <div className="absolute bottom-0 right-0 bg-red-600 text-white text-xs sm:text-sm font-semibold px-2 sm:px-3 py-1 rounded-lg flex items-center gap-1 shadow-lg">
-                    <Play className="w-3 h-3 sm:w-4 sm:h-4 fill-white" />
-                    1h20m
-                  </div>
-                </div>
-              </div> */}
-
               {/* Heading */}
               <div className="text-center mb-2 sm:mb-4">
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-2 leading-tight">
@@ -72,12 +56,12 @@ export default function HeroCTA() {
             </div>
 
             {/* Floating Cards */}
-            <div className="relative h-[22rem] sm:h-[28rem] lg:h-[32rem] mt-8 sm:mt-12 lg:mt-16 flex items-center justify-center">
+            <div className="relative h-[16rem] sm:h-[28rem] lg:h-[32rem] mt-8 sm:mt-12 lg:mt-16 flex items-center justify-center">
               {/* Card container */}
-              <div className="relative w-full max-w-5xl flex justify-between items-center px-4 sm:px-6 lg:px-12 h-full sm:px-0">
+              <div className="relative w-full max-w-5xl flex justify-between items-center px-0 lg:px-2 h-full sm:px-0 sm:min-w-3xl ">
                 {/* Left card */}
-                <div className="relative animate-pulse bottom-16 sm:bottom-20 lg:bottom-28">
-                  <div className="rounded-3xl overflow-hidden shadow-lg border-4 border-white w-24 sm:w-28 lg:w-36 h-32 sm:h-40 lg:h-52 bg-gradient-to-br from-purple-500 via-pink-500 to-red-500">
+                <div className="relative animate-pulse bottom-16 sm:bottom-8 lg:bottom-12 bg-red-300 sm:bg-blue-300 lg:bg-purple-500">
+                  <div className="rounded-3xl overflow-hidden shadow-lg border-4 border-white w-16 sm:w-28 lg:w-36 h-24 sm:h-40 lg:h-52 bg-gradient-to-br from-purple-500 via-pink-500 to-red-500 ">
                     <Image
                       src={leftimg}
                       alt="Content card left"
@@ -92,8 +76,8 @@ export default function HeroCTA() {
                 </div>
 
                 {/* Center-left card */}
-                <div className="relative bottom-0">
-                  <div className="rounded-3xl overflow-hidden shadow-lg border-4 border-white w-24 sm:w-28 lg:w-36 h-32 sm:h-40 lg:h-52 bg-gradient-to-br from-purple-500 via-pink-500 to-red-500">
+                <div className="relative -bottom-0 sm:-bottom-16  lg:-bottom-16 ">
+                  <div className="rounded-3xl overflow-hidden shadow-lg border-4 border-white w-16 sm:w-28 lg:w-36 h-24 sm:h-40 lg:h-52 bg-gradient-to-br from-purple-500 via-pink-500 to-red-500">
                     <Image
                       src="https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2"
                       alt="Content card center-left"
@@ -108,8 +92,8 @@ export default function HeroCTA() {
                 </div>
 
                 {/* Center card */}
-                <div className="relative -bottom-24   ">
-                  <div className=" rounded-3xl overflow-hidden shadow-xl border-4 sm:border-6 border-white w-28 sm:w-32 lg:w-40 h-40 sm:h-48 lg:h-60">
+                <div className="relative -bottom-12 sm:-bottom-36 lg:-bottom-32 ">
+                  <div className=" rounded-3xl overflow-hidden shadow-xl border-4 sm:border-6 border-white w-16 sm:w-32 lg:w-40 h-28 sm:h-48 lg:h-60">
                     <Image
                       src={img1}
                       alt="Content card center"
@@ -121,8 +105,8 @@ export default function HeroCTA() {
                 </div>
 
                 {/* Center-right card */}
-                <div className="relative bottom-0 ">
-                  <div className="rounded-3xl overflow-hidden shadow-lg border-4 border-white w-24 sm:w-28 lg:w-36 h-32 sm:h-40 lg:h-52 bg-gradient-to-br from-purple-500 via-pink-500 to-red-500 ">
+                <div className="relative -bottom-0 sm:-bottom-12 lg:-bottom-12 ">
+                  <div className="rounded-3xl overflow-hidden shadow-lg border-4 border-white w-16 sm:w-28 lg:w-36 h-24 sm:h-40 lg:h-52 bg-gradient-to-br from-purple-500 via-pink-500 to-red-500 ">
                     <Image
                       src="https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2"
                       alt="Content card center-right"
@@ -137,8 +121,8 @@ export default function HeroCTA() {
                 </div>
 
                 {/* Right card */}
-                <div className="relative animate-pulse bottom-16 sm:bottom-20 lg:bottom-28">
-                  <div className="rounded-3xl overflow-hidden shadow-lg border-4 border-white w-24 sm:w-28 lg:w-36 h-32 sm:h-40 lg:h-52 bg-gradient-to-br from-purple-500 via-pink-500 to-red-500 ">
+                <div className="relative animate-pulse bottom-16 sm:bottom-8 lg:bottom-12">
+                  <div className="rounded-3xl overflow-hidden shadow-lg border-4 border-white w-16 sm:w-28 lg:w-36 h-24 sm:h-40 lg:h-52 bg-gradient-to-br from-purple-500 via-pink-500 to-red-500 ">
                     <Image
                       src={rightimg}
                       alt="Content card right"
