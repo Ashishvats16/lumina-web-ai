@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { ChevronDown, Sparkles, Menu, X } from 'lucide-react';
-import lumaLogo from '../../public/assets/icons/luma-logo.jpg'; // adjust path if needed
+import lumaLogo from '../../public/assets/icons/luminaLogo.jpg'; // adjust path if needed
 import Image from 'next/image';
+import Link from 'next/link';
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -47,25 +48,18 @@ export function Header() {
             </button>
 
             <div className="flex items-center space-x-2">
-              {/* <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" /> */}
-           <Image
-  src={lumaLogo}
-  alt="LuminaCore AI Logo"
-  width={128}
-  height={48}
-  className="
-    h-auto 
-    w-24 sm:w-32 md:w-40 lg:w-48 
-    object-contain 
-    transition-transform duration-300 
-    hover:scale-105
-  "
-  priority
-/>
+              <Image
+                src={lumaLogo}
+                alt="LuminaCore AI Logo"
+                width={120}
+                height={40}
+                className="h-8 sm:h-10 lg:h-12 w-auto object-contain hover:scale-105"
+                priority
+              />
+                         <span className="text-lg sm:text-xl font-bold text-gray-900">
+              LuminaCore AI
+            </span>
 
-              {/* <span className="text-base sm:text-lg lg:text-xl font-bold text-gray-900">
-                LuminaCore AI
-              </span> */}
             </div>
 
             <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
@@ -79,14 +73,23 @@ export function Header() {
               <button className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors">
                 Contact sales
               </button>
-              <button className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors">
-                Sign in
-              </button>
+               <Link
+              href="/signin"
+              className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors"
+            >
+              Sign in
+            </Link>
             </nav>
 
-            <button className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-full px-5 py-2 sm:px-6 sm:py-2.5 shadow-md hover:shadow-lg transition-all duration-200">
+            {/* <button className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-full px-5 py-2 sm:px-6 sm:py-2.5 shadow-md hover:shadow-lg transition-all duration-200">
               Sign up
-            </button>
+            </button> */}
+              <Link
+              href="/signin"
+              className="px-4 py-2 text-gray-700 font-medium transition-colors bg-blue-600 text-white text-sm font-medium rounded-full px-5 py-2 sm:px-6 sm:py-2.5 shadow-md hover:shadow-lg transition-all duration-200"
+            >
+              Sign up
+            </Link>
           </div>
         </div>
       </header>
