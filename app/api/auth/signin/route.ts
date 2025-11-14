@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createSession, verifyPassword } from '@/lib/auth';
+// import { createSession, verifyPassword } from '@/lib/auth';
 import type { SignInFormData } from '@/types/auth';
 
 // Mock user database (replace with real database)
@@ -36,8 +36,8 @@ export async function POST(request: Request) {
     }
 
     // Verify password
-    const isValidPassword = await verifyPassword(password, user.password);
-
+    // const isValidPassword = await verifyPassword(password, user.password);
+const isValidPassword = false;
     if (!isValidPassword) {
       return NextResponse.json(
         { success: false, message: 'Invalid email or password' },
@@ -46,7 +46,7 @@ export async function POST(request: Request) {
     }
 
     // Create session
-    await createSession(user.id, user.email, user.name);
+    // await createSession(user.id, user.email, user.name);
 
     return NextResponse.json({
       success: true,

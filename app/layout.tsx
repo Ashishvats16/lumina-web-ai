@@ -1,4 +1,3 @@
-// import { Provider } from '@radix-ui/react-toast';
 import { Providers } from '@/sessionProvider';
 import './globals.css';
 import type { Metadata } from 'next';
