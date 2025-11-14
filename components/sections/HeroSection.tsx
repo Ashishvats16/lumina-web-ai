@@ -3,6 +3,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { Sparkles, Play } from 'lucide-react';
 import { COLORS } from '@/constants';
+import img1 from '../../public/assets/icons/card 1.svg';
+import img2 from '../../public/assets/icons/card 2.svg';
+import img3 from '../../public/assets/icons/card 3.svg';
+import logo from '../../public/assets/icons/luminaLogo.jpg';
+import Image from 'next/image';
+
+
 
 interface VideoCardProps {
   platform: string;
@@ -37,18 +44,14 @@ function VideoCard({
         transform: `rotate(${rotation}deg)`,
       }}
     >
-      <div className={`w-36 sm:w-40 md:w-48 lg:w-56 h-56 sm:h-64 md:h-72 lg:h-80 rounded-2xl md:rounded-3xl p-0.5 bg-gradient-to-br ${gradient} shadow-2xl`}>
-        <div className="w-full h-full rounded-2xl md:rounded-3xl overflow-hidden bg-white flex flex-col">
-          <img
+      <div className={`w-36 sm:w-40 md:w-48 lg:w-56 h-56 sm:h-64 md:h-72 lg:h-80 rounded-2xl md:rounded-3xl p-0.5`}>
+          <Image
             src={imageUrl}
             alt={platform}
-            className="w-full h-32 sm:h-36 md:h-44 lg:h-48 object-cover"
+            width={100}
+            height={100}
+            className="w-full h-full object-contain"
           />
-          <div className="flex-1 p-2.5 sm:p-3 md:p-4 flex flex-col justify-between">
-            <p className="text-xs sm:text-xs md:text-sm font-semibold text-gray-900">{platform}</p>
-            <p className="text-xs text-gray-500 leading-tight text-left">{caption}</p>
-          </div>
-        </div>
       </div>
     </div>
   );
@@ -68,8 +71,7 @@ export default function HeroSection() {
       className="relative w-full bg-gradient-to-b from-blue-50 to-white px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-28 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
-         <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-700 px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
-              {/* <Sparkles className="w-4 h-4 flex-shrink-0" /> */}
+         <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-700 px-3 py-1.5 my-4 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
               <span>AI-Powered Video Intelligence</span>
             </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -78,10 +80,6 @@ export default function HeroSection() {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            {/* <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-700 px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
-              <Sparkles className="w-4 h-4 flex-shrink-0" />
-              <span>AI-Powered Video Intelligence</span>
-            </div> */}
 
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-1 sm:mb-2 leading-tight sm:text-center lg:text-left">
               Your Videos.
@@ -105,9 +103,13 @@ export default function HeroSection() {
 
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-4 justify-center lg:justify-start">
               <button className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white text-base font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
-                {/* <Sparkles className="w-5 h-5" /> */}
-                {/* Imag  */}
-                
+                   {/* <Image
+            src={logo}
+            alt={"logo-icon"}
+            width={24}
+            height={24}
+            className="object-contain background-blue-700"
+          /> */}
                 Upload Videos
               </button>
               <button className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-white border-2 border-gray-300 hover:border-gray-400 text-gray-900 text-base font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2">
@@ -129,7 +131,7 @@ export default function HeroSection() {
                 delay={0}
                 caption="Perfectly cut vertical clip"
                 rotation="-12"
-                imageUrl="https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=2"
+                imageUrl={img1}
               />
               <VideoCard
                 platform="TikTok"
@@ -137,7 +139,7 @@ export default function HeroSection() {
                 delay={150}
                 caption="Short ready"
                 rotation="0"
-                imageUrl="https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=2"
+                imageUrl={img2}
               />
               <VideoCard
                 platform="Instagram Reels"
@@ -145,7 +147,7 @@ export default function HeroSection() {
                 delay={300}
                 caption="& tuned for alignment"
                 rotation="10"
-                imageUrl="https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=2"
+                imageUrl={img3}
               />
             </div>
           </div>
