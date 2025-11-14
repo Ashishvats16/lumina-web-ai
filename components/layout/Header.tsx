@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ChevronDown, Sparkles, Menu, X } from 'lucide-react';
 import lumaLogo from '../../public/assets/icons/luminaLogo.jpg'; // adjust path if needed
 import Image from 'next/image';
+import Link from 'next/link';
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -72,14 +73,23 @@ export function Header() {
               <button className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors">
                 Contact sales
               </button>
-              <button className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors">
-                Sign in
-              </button>
+               <Link
+              href="/signin"
+              className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors"
+            >
+              Sign in
+            </Link>
             </nav>
 
-            <button className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-full px-5 py-2 sm:px-6 sm:py-2.5 shadow-md hover:shadow-lg transition-all duration-200">
+            {/* <button className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-full px-5 py-2 sm:px-6 sm:py-2.5 shadow-md hover:shadow-lg transition-all duration-200">
               Sign up
-            </button>
+            </button> */}
+              <Link
+              href="/signin"
+              className="px-4 py-2 text-gray-700 font-medium transition-colors bg-blue-600 text-white text-sm font-medium rounded-full px-5 py-2 sm:px-6 sm:py-2.5 shadow-md hover:shadow-lg transition-all duration-200"
+            >
+              Sign up
+            </Link>
           </div>
         </div>
       </header>

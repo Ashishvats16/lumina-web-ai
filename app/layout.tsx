@@ -1,3 +1,5 @@
+// import { Provider } from '@radix-ui/react-toast';
+import { Providers } from '@/sessionProvider';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
@@ -16,7 +18,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>
+      <Providers>
+      {children}
+      </Providers>
+        </body>
     </html>
   );
 }
