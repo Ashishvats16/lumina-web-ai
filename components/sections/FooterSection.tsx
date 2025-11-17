@@ -19,9 +19,18 @@ export default function Footer() {
             <h2 className="text-3xl sm:text-4xl font-bold text-black mb-4 sm:mb-6">
               LuminaCore AI
             </h2>
-            <p className="text-sm sm:text-base text-gray-600 leading-relaxed max-w-xs">
-              LuminaCore is an AI-powered platform that turns hours of video into ready-to-publish clips, summaries, and searchable insights.
-            </p>
+      <p
+  className="
+    font-inter font-light text-gray-600 max-w-xs
+    text-sm leading-[1rem] tracking-[0.04rem]
+    sm:text-base sm:leading-[20px] sm:tracking-[0.05rem]
+    lg:leading-[1.25rem] lg:tracking-[0.05rem]
+  "
+>
+  LuminaCore is an AI-powered platform that turns hours of video into
+  ready-to-publish clips, summaries, and searchable insights.
+</p>
+
           </div>
 
           <div>

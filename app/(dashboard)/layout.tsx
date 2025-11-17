@@ -1,7 +1,8 @@
 import DashboardNav from "@/components/dashboard/DashboardNav";
 import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
-import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth.client";
+import { getServerSession } from "next-auth";
+// import { authOptions } from "@/lib/auth";
 
 export default async function DashboardLayout({
   children,
@@ -13,9 +14,9 @@ export default async function DashboardLayout({
   return (
     <div className="min-h-screen bg-gray-50">
       <DashboardNav />
-      <div className="flex">
+      <div className="flex pt-16 relative">
         <DashboardSidebar />
-        <main className="flex-1 p-8">{children}</main>
+        <main className=" w-[-webkit-fill-available]  flex-1 left-56 absolute p-2 overflow-y-auto">{children}</main>
       </div>
     </div>
   );

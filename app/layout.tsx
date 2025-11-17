@@ -8,6 +8,9 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'LuminaCore AI - AI-Powered Video Intelligence',
   description: 'Transform your videos with AI-powered campaigns, summaries, and insights. Make every second searchable, shareable, and monetizable.',
+    icons: {
+    icon: '/assets/icons/luminaLogo.jpg', // add your favicon here
+  },
 };
 
 export default function RootLayout({

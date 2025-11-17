@@ -62,28 +62,25 @@ export function Header() {
 
             </div>
 
-            <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
-              <button className="flex items-center text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors">
-                Features
-                <ChevronDown className="ml-1 w-4 h-4" />
-              </button>
-              <button className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors">
-                Pricing
-              </button>
-              <button className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors">
-                Contact sales
-              </button>
-               <Link
-              href="/signin"
-              className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors"
-            >
-              Sign in
-            </Link>
-            </nav>
+      <nav className="hidden md:flex items-center space-x-6 lg:space-x-8 font-inter  font-normal leading-[100%] tracking-normal">
+  <button className="flex items-center hover:text-blue-600 transition-colors">
+    Features
+    <ChevronDown className="ml-1 w-4 h-4" />
+  </button>
+  <button className="hover:text-blue-600 transition-colors">
+    Pricing
+  </button>
+  <button className="hover:text-blue-600 transition-colors">
+    Contact sales
+  </button>
+  <Link
+    href="/signin"
+    className="hover:text-blue-600 transition-colors"
+  >
+    Sign in
+  </Link>
+</nav>
 
-            {/* <button className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-full px-5 py-2 sm:px-6 sm:py-2.5 shadow-md hover:shadow-lg transition-all duration-200">
-              Sign up
-            </button> */}
               <Link
               href="/signin"
               className="px-4 py-2 text-gray-700 font-medium transition-colors bg-blue-600 text-white text-sm font-medium rounded-full px-5 py-2 sm:px-6 sm:py-2.5 shadow-md hover:shadow-lg transition-all duration-200"
