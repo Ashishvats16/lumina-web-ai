@@ -115,7 +115,7 @@ export default function HeroCTA() {
                 </div>
 
                 {/* Center card */}
-                <div className="relative -bottom-20 sm:-bottom-36 lg:-bottom-40 bg-red-500 sm:bg-blue-500 lg:bg-purple-600 ">
+                <div className="relative -bottom-20 sm:-bottom-36 lg:-bottom-40">
                   <div className=" rounded-3xl overflow-hidden shadow-xl border-4 sm:border-6 border-white w-16 sm:w-32 lg:w-40 h-28 sm:h-48 lg:h-60">
                     <Image
                       src={img1}
