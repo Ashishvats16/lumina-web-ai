@@ -58,6 +58,7 @@ function NewVideoContent() {
         //   onComplete={() => router.push('/videos')}
         // />
         <VideoDetailPage
+        videoId={234}
           onBack={() => navigateToStep("configure")}
           onComplete={() => router.push("/videos")}
         />

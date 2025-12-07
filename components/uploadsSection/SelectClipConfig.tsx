@@ -18,7 +18,7 @@ interface SelectClipsConfigurationProps {
   onGenerateClips?: (selections: SelectionsState) => void;
   fileName?: string;
   onBack?: () => void;
-  onComplete?: () => void;
+  onComplete?: (config?:any) => void;
 }
 
 const platformOptions = ["Instagram", "TikTok", "YouTube", "Facebook"];

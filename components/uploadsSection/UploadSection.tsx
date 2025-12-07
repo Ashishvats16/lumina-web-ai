@@ -55,7 +55,7 @@ const mockUploads: Upload[] = [
   },
 ];
 
-export default function UploadsJobs({ onComplete }: { onComplete?: () => void }) {
+export default function UploadsJobs({ onComplete }: { onComplete?: (videoData?: any) => void }) {
   const [activeTab, setActiveTab] = useState<'uploads'>('uploads');
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
