@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // output: 'export',
+   webpack: (config) => {
+    config.cache = false;
+    return config;
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },

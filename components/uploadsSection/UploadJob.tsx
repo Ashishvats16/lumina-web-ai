@@ -1,7 +1,5 @@
-'use client';
 import { useState, useRef } from 'react';
-import { FileVideo, MoreVertical, Download, Trash2, Eye, ChevronLeft } from 'lucide-react';
-import VideoUploadFlow from './VideoUploadSection';
+import { FileVideo, MoreVertical, Download, Trash2, Eye } from 'lucide-react';
 
 interface Upload {
   id: string;
@@ -55,8 +53,8 @@ const mockUploads: Upload[] = [
   },
 ];
 
-export default function UploadsJobs({ onComplete }: { onComplete?: () => void }) {
-  const [activeTab, setActiveTab] = useState<'uploads'>('uploads');
+export default function UploadsJobs() {
+  const [activeTab, setActiveTab] = useState<'uploads' | 'jobs'>('uploads');
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -114,12 +112,51 @@ export default function UploadsJobs({ onComplete }: { onComplete?: () => void })
   };
 
   return (
-    <div className=" w-full min-h-screen bg-white">
-       
-      <div className="max-w-9xl mx-auto px-6">
-       
+    <div className="min-h-screen bg-gray-50 p-6 md:p-8 lg:p-12">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Uploads & Jobs</h1>
+          <p className="text-gray-600">Manage your video uploads and processing jobs</p>
+        </div>
 
-        <VideoUploadFlow onComplete={onComplete} />
+        <div
+          className={`mb-8 border-2 border-dashed rounded-lg p-12 md:p-16 transition-colors ${
+            isDragging ? 'border-blue-400 bg-blue-50' : 'border-gray-300 bg-white'
+          }`}
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}
+        >
+          <div className="flex flex-col items-center justify-center text-center">
+            <div className="w-16 h-16 mb-4 border-2 border-gray-900 rounded-lg flex items-center justify-center">
+              <FileVideo className="w-8 h-8 text-gray-900" />
+            </div>
+            <h2 className="text-xl font-semibold text-gray-900 mb-2">
+              Drag & Drop Video Files
+            </h2>
+            <p className="text-gray-600 mb-1">
+              or{' '}
+              <button
+                onClick={handleBrowseClick}
+                className="text-blue-600 hover:text-blue-700 font-medium"
+              >
+                click to browse
+              </button>{' '}
+              from your computer
+            </p>
+            <p className="text-sm text-gray-400 mt-2">
+              Supports MP4, MOV, AVI • Max 10GB per file
+            </p>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="video/mp4,video/quicktime,video/x-msvideo"
+              multiple
+              onChange={handleFileSelect}
+              className="hidden"
+            />
+          </div>
+        </div>
 
         <div className="bg-white rounded-lg shadow-sm overflow-hidden">
           <div className="flex border-b border-gray-200">
@@ -132,6 +169,16 @@ export default function UploadsJobs({ onComplete }: { onComplete?: () => void })
               }`}
             >
               Uploads
+            </button>
+            <button
+              onClick={() => setActiveTab('jobs')}
+              className={`px-6 py-4 font-medium transition-colors ${
+                activeTab === 'jobs'
+                  ? 'text-gray-900 border-b-2 border-gray-900'
+                  : 'text-gray-500 hover:text-gray-700'
+              }`}
+            >
+              Jobs
             </button>
           </div>
 

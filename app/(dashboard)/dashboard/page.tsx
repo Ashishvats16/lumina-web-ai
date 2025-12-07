@@ -1,245 +1,345 @@
 'use client';
-import { MoreHorizontal, Plus, Play } from 'lucide-react';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-
-interface MetricCard {
-  label: string;
-  value: string;
-  change: string;
-  isPositive: boolean;
-}
+import { useState, useRef } from 'react';
+import { Upload, TrendingUp, FileUp } from 'lucide-react';
 
 interface RecentUpload {
   id: string;
-  filename: string;
-  timestamp: string;
-  status: 'Completed' | 'Processing' | 'Uploading';
-  icon: React.ReactNode;
-}
-
-interface QuickAction {
-  icon: React.ReactNode;
   title: string;
-  description: string;
-  color: string;
-  href: string;
+  fileSize: string;
+  uploader: string;
+  uploadedAt: string;
+  status: 'Processing Complete' | 'Processing' | 'Failed';
+  videosGenerated: string;
+  progress: number;
 }
 
-export default function Dashboard() {
-  const [activeJob, setActiveJob] = useState<number | null>(null);
-  const router = useRouter();
+interface UsageStats {
+  label: string;
+  current: number;
+  limit: number;
+  unit: string;
+  percentage: number;
+}
 
-  const metrics: MetricCard[] = [
-    { label: 'Total Videos', value: '1,247', change: '+12% from last month', isPositive: true },
-    { label: 'Active Jobs', value: '89', change: '+8% from last month', isPositive: true },
-    { label: 'Clips Generated', value: '2.4m', change: '-15% from last month', isPositive: false },
-    { label: 'Publish-Ready Assets', value: '3,562', change: '+24% from last month', isPositive: true },
-  ];
+const mockRecentUploads: RecentUpload[] = [
+  {
+    id: '1',
+    title: 'Product Feature Highlight',
+    fileSize: '2.4 GB',
+    uploader: 'Sarah Chen',
+    uploadedAt: '12 min ago',
+    status: 'Processing Complete',
+    videosGenerated: 'Analyzing segments',
+    progress: 80,
+  },
+  {
+    id: '2',
+    title: 'Customer_Testimonial_v2.mp4',
+    fileSize: '1.8 GB',
+    uploader: 'Mike Johnson',
+    uploadedAt: '1 hour ago',
+    status: 'Processing Complete',
+    videosGenerated: '8 videos generated (2 platforms × 2 languages)',
+    progress: 100,
+  },
+  {
+    id: '3',
+    title: 'Team_All_Hands_Nov.mp4',
+    fileSize: '3.2 GB',
+    uploader: 'Alex Kim',
+    uploadedAt: '3 hour ago',
+    status: 'Processing Complete',
+    videosGenerated: '8 videos generated (2 platforms × 2 languages)',
+    progress: 100,
+  },
+];
 
-  const jobs = [
-    { id: '1', title: 'Product_Launch_2024.mp4', status: 'Transcribing audio...', progress: 45 },
-    { id: '2', title: 'Interview_Series_E03.mp4', status: 'Generating clips', progress: 78 },
-    { id: '3', title: 'Webinar_Q4_Strategy.mp4', status: 'Complete', progress: 100 },
-  ];
+const usageStats: UsageStats[] = [
+  {
+    label: 'Videos Processed',
+    current: 1247,
+    limit: 5000,
+    unit: 'videos',
+    percentage: 25,
+  },
+  {
+    label: 'Storage',
+    current: 2.4,
+    limit: 10,
+    unit: 'TB',
+    percentage: 24,
+  },
+  {
+    label: 'API Calls',
+    current: 12458,
+    limit: 50000,
+    unit: 'calls',
+    percentage: 25,
+  },
+];
 
-  const recentUploads: RecentUpload[] = [
-    {
-      id: '1',
-      filename: 'Product Demo Q4 2024.mp4',
-      timestamp: '2 hours ago',
-      status: 'Completed',
-      icon: <div className="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center"><Play className="w-5 h-5 text-gray-600" /></div>,
-    },
-    {
-      id: '2',
-      filename: 'Customer Testimonial - Sarah.mp4',
-      timestamp: '5 hours ago',
-      status: 'Processing',
-      icon: <div className="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center"><Play className="w-5 h-5 text-gray-600" /></div>,
-    },
-    {
-      id: '3',
-      filename: 'Brand Story Extended Cut.mp4',
-      timestamp: '1 hours ago',
-      status: 'Completed',
-      icon: <div className="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center"><Play className="w-5 h-5 text-gray-600" /></div>,
-    },
-    {
-      id: '4',
-      filename: 'Social Media Promo Reel.mp4',
-      timestamp: '2 days ago',
-      status: 'Uploading',
-      icon: <div className="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center"><Play className="w-5 h-5 text-gray-600" /></div>,
-    },
-  ];
+export default function Overview() {
+  const [recentUploads, setRecentUploads] = useState<RecentUpload[]>(mockRecentUploads);
+  const [dragActive, setDragActive] = useState(false);
+  const [uploadedFile, setUploadedFile] = useState<{ name: string; size: string } | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const quickActions: QuickAction[] = [
-    {
-      icon: <Plus className="w-5 h-5" />,
-      title: 'Upload New Video',
-      description: 'Add videos for AI processing',
-      color: 'bg-blue-50',
-      href: '/dashboard/uploads',
-    },
-    {
-      icon: <Plus className="w-5 h-5" />,
-      title: 'Start Campaign',
-      description: 'Create a new AI campaign',
-      color: 'bg-purple-50',
-      href: '/dashboard/library',
-    },
-    {
-      icon: <Plus className="w-5 h-5" />,
-      title: 'View Insights',
-      description: 'Analyze your performance',
-      color: 'bg-amber-50',
-      href: '/dashboard',
-    },
-  ];
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    setDragActive(true);
+  };
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'Completed':
-        return 'bg-green-100 text-green-700';
-      case 'Processing':
-        return 'bg-blue-100 text-blue-700';
-      case 'Uploading':
-        return 'bg-amber-100 text-amber-700';
-      default:
-        return 'bg-gray-100 text-gray-700';
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    setDragActive(false);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setDragActive(false);
+
+    const files = e.dataTransfer.files;
+    if (files.length > 0) {
+      handleFileSelect(files[0]);
     }
   };
 
-  const handleUploadClick = (uploadId: string) => {
-    router.push(`/dashboard/library/${uploadId}`);
+  const handleFileSelect = (file: File) => {
+    if (!file.type.startsWith('video/')) {
+      alert('Please select a video file');
+      return;
+    }
+
+    const sizeInMB = file.size / (1024 * 1024);
+    if (sizeInMB > 100000) {
+      alert('File size must be less than 100GB');
+      return;
+    }
+
+    const sizeDisplay = sizeInMB > 1024 ? `${(sizeInMB / 1024).toFixed(1)} GB` : `${sizeInMB.toFixed(1)} MB`;
+
+    setUploadedFile({
+      name: file.name,
+      size: sizeDisplay,
+    });
+
+    const newUpload: RecentUpload = {
+      id: Math.random().toString(36).substr(2, 9),
+      title: file.name.replace(/\.[^/.]+$/, ''),
+      fileSize: sizeDisplay,
+      uploader: 'You',
+      uploadedAt: 'just now',
+      status: 'Processing',
+      videosGenerated: 'Processing...',
+      progress: 10,
+    };
+
+    setRecentUploads((prev) => [newUpload, ...prev.slice(0, 2)]);
+
+    setTimeout(() => {
+      setRecentUploads((prev) =>
+        prev.map((upload) =>
+          upload.id === newUpload.id
+            ? {
+                ...upload,
+                progress: 100,
+                status: 'Processing Complete',
+                videosGenerated: '8 videos generated (2 platforms × 2 languages)',
+              }
+            : upload
+        )
+      );
+    }, 3000);
   };
 
-  const handleJobClick = (jobId: string) => {
-    router.push(`/dashboard/uploads?job=${jobId}`);
+  const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      handleFileSelect(e.target.files[0]);
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white w-full">
       <div className="max-w-9xl mx-auto px-6 py-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Overview</h1>
-          <p className="text-gray-600">Welcome back! Here's what's happening with your content.</p>
+        <div className="mb-12">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+            Overview
+          </h1>
+          <p className="text-gray-600">
+            Welcome back! Here's what's happening with your content.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          {metrics.map((metric, index) => (
-            <div key={index} className="bg-white rounded-lg border border-gray-200 p-6 hover:border-gray-300 transition-colors">
-              <p className="text-gray-600 text-sm font-medium mb-2">{metric.label}</p>
-              <h3 className="text-3xl font-bold text-gray-900 mb-3">{metric.value}</h3>
-              <p className={`text-sm font-medium ${metric.isPositive ? 'text-green-600' : 'text-red-600'}`}>
-                {metric.change}
-              </p>
-              <div className="mt-4 w-12 h-12 bg-blue-100 rounded-lg"></div>
-            </div>
-          ))}
-        </div>
+        <div className="mb-12">
+          <h2 className="text-xl font-semibold text-gray-900 mb-6">
+            Recent Uploads ( Last 7 days )
+          </h2>
 
-        <div className="flex justify-center mb-8">
-          <button 
-            onClick={() => router.push('/dashboard/uploads')}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center gap-2 transition-colors"
-          >
-            <Plus className="w-5 h-5" />
-            New Project
-          </button>
-        </div>
-
-        <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-          <h2 className="text-lg font-bold text-gray-900 mb-6">Active Jobs</h2>
-          <div className="space-y-4">
-            {jobs.map((job) => (
-              <div 
-                key={job.id} 
-                onClick={() => handleJobClick(job.id)}
-                className="border border-gray-200 rounded-lg p-4 cursor-pointer hover:border-gray-300 transition-colors"
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {recentUploads.map((upload) => (
+              <div
+                key={upload.id}
+                className="bg-white border border-gray-300 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow"
               >
-                <div className="flex items-start justify-between mb-3">
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900">{job.title}</h3>
-                    <p className="text-sm text-gray-600 mt-1">{job.status}</p>
+                <div className="h-32 bg-gradient-to-br from-blue-200 to-blue-100" />
+
+                <div className="p-5">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                    {upload.title}
+                  </h3>
+
+                  <p className="text-sm text-gray-600 mb-3">
+                    {upload.fileSize} · Uploaded by {upload.uploader} · {upload.uploadedAt}
+                  </p>
+
+                  <div className="mb-4">
+                    <p className="text-xs font-medium text-blue-600 mb-2">
+                      {upload.videosGenerated}
+                    </p>
+
+                    <div className="flex gap-2 items-center mb-2">
+                      <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-blue-600 transition-all duration-500 rounded-full"
+                          style={{ width: `${upload.progress}%` }}
+                        />
+                      </div>
+                      <span className="text-xs font-medium text-gray-600">
+                        {upload.progress}%
+                      </span>
+                    </div>
                   </div>
-                  <span className="text-gray-900 font-semibold">{job.progress}%</span>
-                </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div
-                    className="bg-gray-900 h-2 rounded-full transition-all duration-300"
-                    style={{ width: `${job.progress}%` }}
-                  ></div>
+
+                  <div className="flex items-center justify-between">
+                    <span
+                      className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${
+                        upload.status === 'Processing Complete'
+                          ? 'bg-green-100 text-green-700'
+                          : upload.status === 'Processing'
+                            ? 'bg-blue-100 text-blue-700'
+                            : 'bg-red-100 text-red-700'
+                      }`}
+                    >
+                      {upload.status}
+                    </span>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2">
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
-              <h2 className="text-lg font-bold text-gray-900 mb-6">Recent Uploads</h2>
-              <div className="space-y-4">
-                {recentUploads.map((upload) => (
-                  <div 
-                    key={upload.id} 
-                    onClick={() => handleUploadClick(upload.id)}
-                    className="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
-                  >
-                    <div className="flex items-center gap-4 flex-1">
-                      {upload.icon}
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-gray-900">{upload.filename}</h3>
-                        <p className="text-sm text-gray-500">{upload.timestamp}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(upload.status)}`}>
-                        {upload.status}
-                      </span>
-                      <button 
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          // Handle more options
-                        }}
-                        className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
-                      >
-                        <MoreHorizontal className="w-5 h-5" />
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+        <div className="mb-12">
+          <h2 className="text-xl font-semibold text-gray-900 mb-6">Current Usage</h2>
 
-          <div>
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
-              <h2 className="text-lg font-bold text-gray-900 mb-6">Quick Actions</h2>
-              <div className="space-y-3">
-                {quickActions.map((action, index) => (
-                  <button
-                    key={index}
-                    onClick={() => {
-                      setActiveJob(index);
-                      router.push(action.href);
-                    }}
-                    className={`w-full p-4 rounded-lg border border-gray-200 hover:border-gray-300 text-left transition-all ${action.color} hover:shadow-sm`}
-                  >
-                    <div className="flex items-start gap-3">
-                      <div className="text-gray-600 mt-0.5">
-                        {action.icon}
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-gray-900 text-sm">{action.title}</h3>
-                        <p className="text-xs text-gray-600 mt-1">{action.description}</p>
-                      </div>
-                    </div>
-                  </button>
-                ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {usageStats.map((stat, index) => (
+              <div
+                key={index}
+                className="bg-white border border-gray-300 rounded-2xl p-6 hover:shadow-lg transition-shadow"
+              >
+                <div className="flex items-start justify-between mb-6">
+                  <div>
+                    <p className="text-sm text-gray-600 mb-1">
+                      <span className="text-blue-600 font-semibold hover:underline cursor-pointer">
+                        {stat.label}
+                      </span>
+                    </p>
+                    <p className="text-2xl font-bold text-gray-900">
+                      {stat.current.toLocaleString()} / {stat.limit.toLocaleString()} {stat.unit}
+                    </p>
+                  </div>
+                  <TrendingUp className="w-6 h-6 text-gray-400" />
+                </div>
+
+                <div className="mb-4">
+                  <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-blue-600 rounded-full transition-all duration-500"
+                      style={{ width: `${stat.percentage}%` }}
+                    />
+                  </div>
+                </div>
+
+                <p className="text-sm text-gray-600">
+                  {stat.percentage}% used
+                </p>
               </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-xl font-semibold text-gray-900 mb-6">Quick Actions</h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
+              onClick={() => fileInputRef.current?.click()}
+              className={`border-2 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-all ${
+                dragActive
+                  ? 'border-blue-500 bg-blue-50'
+                  : 'border-gray-300 bg-white hover:bg-gray-50'
+              }`}
+            >
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="video/*"
+                onChange={handleFileInputChange}
+                className="hidden"
+              />
+
+              <div className="flex flex-col items-center">
+                <div className="w-12 h-12 rounded-lg border-2 border-gray-400 flex items-center justify-center mb-3">
+                  <FileUp className="w-6 h-6 text-gray-600" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  Upload New Video
+                </h3>
+                <p className="text-sm text-blue-600 font-medium mb-1">
+                  Drag & Drop Video Files
+                </p>
+                <p className="text-xs text-gray-500 mb-1">
+                  or click to browse from your computer
+                </p>
+                <p className="text-xs text-gray-400">
+                  Supports MP4, MOV, AVI • Max 100GB per file
+                </p>
+              </div>
+
+              {uploadedFile && (
+                <div className="mt-4 pt-4 border-t border-gray-200">
+                  <p className="text-sm text-green-600 font-medium">
+                    ✓ {uploadedFile.name}
+                  </p>
+                  <p className="text-xs text-gray-500">{uploadedFile.size}</p>
+                </div>
+              )}
+            </div>
+
+            <div className="bg-white border border-gray-300 rounded-2xl p-8">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                View Documentation
+              </h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                This video covers the major product announcements for 2024,
+                highlighting three key features: AI-powered automation,
+                enhanced collaboration tools, and advanced analytics...
+              </p>
+            </div>
+
+            <div className="bg-white border border-gray-300 rounded-2xl p-8">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                View Guides
+              </h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                This video covers the major product announcements for 2024,
+                highlighting three key features: AI-powered automation,
+                enhanced collaboration tools, and advanced analytics...
+              </p>
             </div>
           </div>
         </div>
