@@ -40,7 +40,7 @@ export default function HeroCTA() {
     tracking-normal sm:tracking-normal lg:tracking-[0.21rem]
   "
                 >
-                  Ready to make your
+                  Early access pricing
                 </h1>
 
                 {/* Heading 2 */}
@@ -53,28 +53,28 @@ export default function HeroCTA() {
     tracking-normal sm:tracking-normal lg:tracking-[0.21rem]
   "
                 >
-                  video content work smarter
+                  {/* video content work smarter */}
                 </h2>
 
                 {/* Paragraph */}
-                <p
-                  className="
-    font-inter font-extralight text-gray-600 text-center max-w-2xl mx-auto
-    text-base sm:text-lg lg:text-xl
-    leading-[32px] tracking-[0.14rem]
+             <p
+  className="
+    font-inter font-normal text-[18px] text-gray-600 text-center
+    leading-[2rem] tracking-[0.07em] max-w-2xl mx-auto
   "
-                >
-                  Sign up now and start transforming your videos{" "}
-                  <br className="hidden sm:block mt-2" />
-                  into campaigns & insights with{" "}
-                  <br className="hidden sm:block mt-2" />
-                  no learning curve
-                </p>
+>
+  We’re currently onboarding early users with founder-friendly pricing and close product support.
+  <br className="block sm:block" />
+  Flexible plans for individual creators and small teams.
+  <br className="block sm:block" />
+  Custom options for agencies and enterprises
+</p>
+
               </div>
 
               {/* CTA Button */}
-              <button className="px-8 sm:px-10 lg:px-12 py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-blue-400 text-white text-base sm:text-lg font-semibold rounded-full hover:from-blue-600 hover:to-blue-500 transition-all shadow-lg hover:shadow-xl">
-                Start Free Trial
+              <button className="px-8 sm:px-10 lg:px-12 py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-blue-400 text-white text-base sm:text-lg font-semibold rounded-2xl hover:from-blue-600 hover:to-blue-500 transition-all shadow-lg hover:shadow-xl">
+               Talk to us about pricing
               </button>
             </div>
 

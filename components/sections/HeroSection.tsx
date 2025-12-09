@@ -71,20 +71,23 @@ export default function HeroSection() {
       className="relative w-full bg-gradient-to-b from-blue-50 to-white px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-28 overflow-hidden "
     >
       <div className="absolute bottom-0 left-0 right-0 h-32 sm:h-40 md:h-48 pointer-events-none">
+ 
         <div
-          className="absolute inset-0 hidden lg:block sm:block"
-          style={{
-            background:
-              "radial-gradient(ellipse 80% 100% at 50% 100%, rgba(179, 252, 106, 0.9) 0%, rgba(179, 252, 106, 0.5) 40%, transparent 70%)",
-          }}
-        ></div>
+  className="absolute inset-0 hidden lg:block sm:block"
+  style={{
+    background: `radial-gradient(ellipse 80% 100% at 50% 100%, rgba(59, 131, 246, 0.7) 0%, rgba(59, 131, 246, 0.34) 40%, transparent 70%)`,
+    backdropFilter: 'blur(210.6px)',
+  }}
+></div>
+
       </div>
 
       <div className="max-w-7xl mx-auto">
         <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-700 px-3 py-1.5 my-4 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+         <Sparkles className="w-4 h-4 flex-shrink-0" />
           <span>AI-Powered Video Intelligence</span>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-[65%_30%] gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[60%_38%] gap-8 lg:gap-12 items-center">
           <div
             className={`transition-all order-2 lg:order-1 ${
               isVisible
@@ -92,40 +95,32 @@ export default function HeroSection() {
                 : "opacity-0 translate-y-8"
             }`}
           >
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-1 sm:mb-2 sm:text-center lg:text-left  font-poppins font-medium leading-[5.85rem] tracking-[0.468rem] tracking-[0.16775rem] leading-[2.51625rem] ">
-              Your Videos.
-            </h1>
-            <div className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-tight sm:text-center lg:text-left">
-              <span
-                className={`text-transparent bg-clip-text bg-gradient-to-r  font-poppins font-medium  lg:leading-[5.85rem] lg:tracking-[0.468rem] tracking-[0.16775rem] leading-[2.51625rem] `}
-                style={{
-                  backgroundImage: `linear-gradient(to right, ${COLORS.gradient.heroText.from}, ${COLORS.gradient.heroText.to})`,
-                }}
-              >
-                Now Smarter
-              </span>
-            </div>
+<div className="mb-6 sm:mb-8 text-center lg:text-left">
+  <span
+    className="font-poppins font-bold text-4xl sm:text-5xl lg:text-[48px] leading-[65px] lg:leading-[70px] tracking-[0.08em] text-transparent bg-clip-text bg-gradient-to-r"
+    style={{
+      backgroundImage: `linear-gradient(to right, ${COLORS.gradient.heroText.from}, ${COLORS.gradient.heroText.to})`,
+    }}
+  >
+    Turn long videos into campaigns & summaries in minutes.
+  </span>
+</div>
 
-            <p className="min-w-fit sm:min-w-fit lg:min-w-[80%] text-base sm:text-lg text-gray-600 leading-relaxed max-w-md mx-auto lg:mx-0 mb-8 sm:mb-10 lg:leading-[1.35rem] lg:tracking-[0.108rem] tracking-[0.04685rem] leading-[1.35rem] text-center lg:text-left">
-              Upload once — LuminaCore AI generates campaigns, summaries, and
-              insights that make every second of your video searchable,
-              shareable, and monetizable.
+
+
+            <p className=" font-inter font-normal text-[18px] leading-[27px] tracking-[0.08em] text-gray-600 min-w-fit sm:min-w-fit lg:min-w-[80%] max-w-md mx-auto lg:mx-0 mb-8 sm:mb-10 text-center lg:text-left">
+              LuminaCore AI transforms webinars, trainings, podcasts, and events into ready-to-publish clips, captions, summaries, and multilingual subtitles — so your team ships more content with less effort.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-4 justify-center lg:justify-start">
               <button className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white text-base font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
-                {/* <Image
-    src={logo}
-            alt={"logo-icon"}
-    width={24}
-    height={24}
-            className="object-contain background-blue-700"
-  /> */}
-                Upload Videos
+         <Sparkles className="w-4 h-4 flex-shrink-0" />
+
+                Get early access
               </button>
               <button className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-white border-2 border-gray-300 hover:border-gray-400 text-gray-900 text-base font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2">
                 <Play className="w-5 h-5" />
-                See how it works
+                Watch 2 min demo
               </button>
             </div>
           </div>

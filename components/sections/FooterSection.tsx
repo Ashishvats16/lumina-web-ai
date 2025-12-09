@@ -1,7 +1,11 @@
 'use client';
 
 import { Linkedin, Instagram, Twitter, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 import { useState } from 'react';
+import lumaLogo from "../../public/assets/icons/luminaLogo.jpg";
+// import lumaLogo from "../../public/assets/icons";
+
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -12,13 +16,25 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#F0EBE7] border-t border-gray-200">
+    <footer className="bg-[#3B82F633] border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-6 lg:gap-8 mb-12 sm:mb-16">
           <div className="lg:col-span-2">
+            <div className='flex gap-4 center'>
+
+              <Image
+                src={lumaLogo}
+                alt="LuminaCore AI Logo"
+                width={120}
+                height={40}
+                className="h-8 sm:h-10 lg:h-12 w-auto object-contain hover:scale-105"
+                priority
+              />
             <h2 className="text-3xl sm:text-4xl font-bold text-black mb-4 sm:mb-6">
               LuminaCore AI
             </h2>
+            </div>
+
       <p
   className="
     font-inter font-light text-gray-600 max-w-xs
