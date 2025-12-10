@@ -20,7 +20,7 @@ export const COLORS = {
     /** Text gradient used for “Now Smarter” */
     heroText: {
       from: '#000000',
-      to: '#8638C6',
+      to: '#3B82F6',
     },
   },
   text: {

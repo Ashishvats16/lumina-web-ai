@@ -1,61 +1,70 @@
-'use client';
+"use client";
 
-import { Check } from 'lucide-react';
-import { useState } from 'react';
+import { Check } from "lucide-react";
+import { useState } from "react";
 
 export default function PricingTiers() {
   const [isMonthly, setIsMonthly] = useState(true);
 
   const starterFeatures = [
-    'Upload up to 2 videos/month',
-    'Standard summaries & transcripts',
-    'Access to basic campaign templates',
-    '480p / 720p clip exports',
-    'Community support',
+    "Upload up to 2 videos/month",
+    "Standard summaries & transcripts",
+    "Access to basic campaign templates",
+    "480p / 720p clip exports",
+    "Community support",
   ];
 
   const creatorFeatures = [
-    'Everything in Basic, plus',
-    'Upload up to 2 videos/Unlimited uploads',
-    'Advanced templates (customizable)',
-    'Brand panel (logo, color, font settings)',
-    'Engagement-based summary and insights',
-    'HD clip exports',
-    'Priority email support',
+    "Everything in Basic, plus",
+    "Upload up to 2 videos/Unlimited uploads",
+    "Advanced templates (customizable)",
+    "Brand panel (logo, color, font settings)",
+    "Engagement-based summary and insights",
+    "HD clip exports",
+    "Priority email support",
   ];
 
   const proFeatures = [
-    'Everything in Creator, plus',
-    'Enterprise upload size & speed',
-    'Custom integrations & API access',
-    'SLA support',
-    'Team / multi-seat accounts',
-    'Advanced analytics & reporting',
-    'Watermark-free exports',
-    'Priority feature requests',
+    "Everything in Creator, plus",
+    "Enterprise upload size & speed",
+    "Custom integrations & API access",
+    "SLA support",
+    "Team / multi-seat accounts",
+    "Advanced analytics & reporting",
+    "Watermark-free exports",
+    "Priority feature requests",
   ];
 
   return (
-    <div className=" bg-[radial-gradient(circle_at_center,_rgba(59,130,246,0.25),_transparent_70%),linear-gradient(to_bottom,_white,_rgba(239,246,255,0.5),_white)] py-32 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
+    <div className="py-32 px-4 sm:px-6 lg:px-8 relative">
+      <div className="max-w-7xl mx-auto relative ">
+        <div
+          className="absolute top-[15%] left-1/2 -translate-x-1/2 w-full h-full pointer-events-none -z-10 "
+          style={{
+            background:
+              "radial-gradient(ellipse 30% 20% at 50% 5%, rgba(24, 114, 217, 0.8) 10%, rgba(155, 195, 244, 0.5) 25%, rgba(165, 199, 243, 0.2) 55%, transparent 100%)",
+          }}
+        ></div>
+        <div className="text-center mb-12 ">
           <h1 className="text-5xl sm:text-6xl font-bold text-black mb-4">
             Pricing Tiers
           </h1>
+
           <p className="text-xl text-gray-600 mb-2">
             Simple plans for every creator.
           </p>
           <p className="text-base text-gray-500 mb-8">
-            Choose the plan that fits your workflow — from solo creators to full production teams.
+            Choose the plan that fits your workflow — from solo creators to full
+            production teams.
           </p>
 
-          <div className="inline-flex items-center bg-white rounded-full p-1.5 shadow-lg">
+          <div className="inline-flex items-center bg-white rounded-full p-1.5 shadow-lg z-20">
             <button
               onClick={() => setIsMonthly(true)}
               className={`px-8 py-2.5 rounded-full text-sm font-medium transition-all ${
                 isMonthly
-                  ? 'bg-gradient-to-r from-blue-500 to-blue-400 text-white shadow-md'
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? "bg-gradient-to-r from-blue-500 to-blue-400 text-white shadow-md"
+                  : "text-gray-600 hover:text-gray-900"
               }`}
             >
               Monthly
@@ -64,8 +73,8 @@ export default function PricingTiers() {
               onClick={() => setIsMonthly(false)}
               className={`px-8 py-2.5 rounded-full text-sm font-medium transition-all flex items-center gap-2 ${
                 !isMonthly
-                  ? 'bg-gradient-to-r from-blue-500 to-blue-400 text-white shadow-md'
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? "bg-gradient-to-r from-blue-500 to-blue-400 text-white shadow-md"
+                  : "text-gray-600 hover:text-gray-900"
               }`}
             >
               Yearly
@@ -76,12 +85,13 @@ export default function PricingTiers() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto" >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           <div className="bg-white rounded-3xl shadow-lg p-8 flex flex-col">
             <div className="mb-6">
               <h2 className="text-2xl font-bold text-black mb-2">Starter</h2>
               <p className="text-sm text-gray-500 leading-relaxed">
-                Individuals or small teams testing video content workflows for the first time
+                Individuals or small teams testing video content workflows for
+                the first time
               </p>
             </div>
 
@@ -106,11 +116,12 @@ export default function PricingTiers() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-blue-100/70 via-blue-50/50 to-white rounded-3xl shadow-2xl p-8 flex flex-col relative border border-blue-200/50">
+          <div className=" rounded-3xl shadow-2xl p-8 flex flex-col relative border border-blue-200/50">
             <div className="mb-6">
               <h2 className="text-2xl font-bold text-black mb-2">Creator</h2>
               <p className="text-sm text-gray-600 leading-relaxed">
-                Social creators, small agencies, or marketing teams pushing content regularly
+                Social creators, small agencies, or marketing teams pushing
+                content regularly
               </p>
             </div>
 
@@ -139,7 +150,8 @@ export default function PricingTiers() {
             <div className="mb-6">
               <h2 className="text-2xl font-bold text-black mb-2">Pro</h2>
               <p className="text-sm text-gray-500 leading-relaxed">
-                Agencies, enterprises, content-heavy teams needing scale, branding, and deep analytics
+                Agencies, enterprises, content-heavy teams needing scale,
+                branding, and deep analytics
               </p>
             </div>
 

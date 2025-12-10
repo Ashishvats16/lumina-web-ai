@@ -1,7 +1,9 @@
 'use client';
 
 import { Linkedin, Instagram, Twitter, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 import { useState } from 'react';
+import lumaLogo from "../../public/assets/icons/luminaLogo.jpg";
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -12,15 +14,34 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#F0EBE7] border-t border-gray-200">
+    <footer className="bg-[rgba(59,130,246,0.2)] border border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-6 lg:gap-8 mb-12 sm:mb-16">
           <div className="lg:col-span-2">
-            <h2 className="text-3xl sm:text-4xl font-bold text-black mb-4 sm:mb-6">
-              LuminaCore AI
-            </h2>
-            <p className="text-sm sm:text-base text-gray-600 leading-relaxed max-w-xs">
-              LuminaCore is an AI-powered platform that turns hours of video into ready-to-publish clips, summaries, and searchable insights.
+            <div className='flex gap-4 center'>
+              <Image
+                src={lumaLogo}
+                alt="LuminaCore AI Logo"
+                width={120}
+                height={40}
+                className="h-8 sm:h-10 lg:h-12 w-auto object-contain hover:scale-105"
+                priority
+              />
+              <h2 className="text-3xl sm:text-4xl font-bold text-black mb-4 sm:mb-6">
+                LuminaCore AI
+              </h2>
+            </div>
+
+            <p
+              className="
+                font-inter font-light text-gray-600 max-w-xs
+                text-sm leading-[1rem] tracking-[0.04rem]
+                sm:text-base sm:leading-[20px] sm:tracking-[0.05rem]
+                lg:leading-[1.25rem] lg:tracking-[0.05rem]
+              "
+            >
+              LuminaCore is an AI-powered platform that turns hours of video into
+              ready-to-publish clips, summaries, and searchable insights.
             </p>
           </div>
 
@@ -30,27 +51,27 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2.5 sm:space-y-3">
               <li>
-                <a href="#" className="text-gray-700 hover:text-black text-sm sm:text-base transition-colors">
+                <a href="/product" className="text-gray-700 hover:text-black text-sm sm:text-base transition-colors">
                   Campaign Engine
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-700 hover:text-black text-sm sm:text-base transition-colors">
+                <a href="/product" className="text-gray-700 hover:text-black text-sm sm:text-base transition-colors">
                   Video Insights
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-700 hover:text-black text-sm sm:text-base transition-colors">
+                <a href="/product" className="text-gray-700 hover:text-black text-sm sm:text-base transition-colors">
                   Summarization
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-700 hover:text-black text-sm sm:text-base transition-colors">
+                <a href="#" className="text-gray-700 text-sm sm:text-base transition-colors">
                   Pricing
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-700 hover:text-black text-sm sm:text-base transition-colors">
+                <a href="/auth/signin" className="text-gray-700 hover:text-black text-sm sm:text-base transition-colors">
                   Demo
                 </a>
               </li>
@@ -63,27 +84,27 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2.5 sm:space-y-3">
               <li>
-                <a href="#" className="text-gray-700 hover:text-black text-sm sm:text-base transition-colors">
+                <a href="/solutions" className="text-gray-700 hover:text-black text-sm sm:text-base transition-colors">
                   Overview
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-700 hover:text-black text-sm sm:text-base transition-colors">
+                <a href="#" className="text-gray-700 text-sm sm:text-base transition-colors">
                   Blog
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-700 hover:text-black text-sm sm:text-base transition-colors">
+                <a href="#" className="text-gray-700 text-sm sm:text-base transition-colors">
                   FAQs
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-700 hover:text-black text-sm sm:text-base transition-colors">
+                <a href="#" className="text-gray-700 text-sm sm:text-base transition-colors">
                   API Reference
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-700 hover:text-black text-sm sm:text-base transition-colors">
+                <a href="#" className="text-gray-700 text-sm sm:text-base transition-colors">
                   Support
                 </a>
               </li>
@@ -96,22 +117,22 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2.5 sm:space-y-3">
               <li>
-                <a href="#" className="text-gray-700 hover:text-black text-sm sm:text-base transition-colors">
+                <a href="/" className="text-gray-700 hover:text-black text-sm sm:text-base transition-colors">
                   Work
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-700 hover:text-black text-sm sm:text-base transition-colors">
+                <a href="/" className="text-gray-700 hover:text-black text-sm sm:text-base transition-colors">
                   News
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-700 hover:text-black text-sm sm:text-base transition-colors">
+                <a href="#" className="text-gray-700 text-sm sm:text-base transition-colors">
                   FAQs
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-700 hover:text-black text-sm sm:text-base transition-colors">
+                <a href="#" className="text-gray-700 text-sm sm:text-base transition-colors">
                   Awards
                 </a>
               </li>
@@ -124,7 +145,7 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2.5 sm:space-y-3">
               <li>
-                <a href="#" className="text-gray-700 hover:text-black text-sm sm:text-base transition-colors">
+                <a href="/about" className="text-gray-700 hover:text-black text-sm sm:text-base transition-colors">
                   Contact
                 </a>
               </li>
