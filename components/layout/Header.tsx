@@ -73,14 +73,17 @@ export function Header() {
                 </Link>
               ))}
 
-              <Link
+          
+            </nav>
+
+<div className="flex gap-4 lg:gap-6 items-center">
+
+    <Link
                 href="/signin"
-                className="font-inter font-semibold text-xl leading-9 align-middle"
+                className="font-inter font-semibold text-md lg:text-xl sm:text-sm leading-9 align-middle"
               >
                 Sign in
               </Link>
-            </nav>
-
             {/* Sign Up Button */}
             <Link
               href="/signin"
@@ -88,6 +91,8 @@ export function Header() {
             >
               Sign up
             </Link>
+</div>
+
           </div>
         </div>
       </header>

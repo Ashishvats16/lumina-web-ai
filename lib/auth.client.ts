@@ -1,6 +1,4 @@
-// 'use client';
 import { signIn, signOut } from 'next-auth/react';
-
 import { NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 
@@ -14,12 +12,12 @@ export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async redirect({ url, baseUrl }) {
-      // Redirect to dashboard after sign in
-      if (url.startsWith(baseUrl)) return url;
-      return `${baseUrl}/dashboard`;
+      if (url.startsWith("/")) return `${baseUrl}${url}`;
+      if (new URL(url).origin === baseUrl) return url;
+      return baseUrl;
     },
   },
 };
 
 export const handleSignIn = () => signIn('google', { callbackUrl: '/dashboard' });
-export const handleSignOut = () => signOut();
+export const handleSignOut = () => signOut({ callbackUrl: '/' });

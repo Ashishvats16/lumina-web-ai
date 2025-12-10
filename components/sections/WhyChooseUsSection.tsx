@@ -6,7 +6,7 @@ export default function WhyChooseSection() {
       id: 1,
       icon: Info,
       title: 'Understands context, not just timestamps',
-      description: 'Finds moments where the story, emotion, and message land — not random cuts.',
+      description: 'Finds moments where the story, emotion, and message land - not random cuts.',
     },
     {
       id: 2,
@@ -24,7 +24,7 @@ export default function WhyChooseSection() {
       id: 4,
       icon: Zap,
       title: 'Built for scale',
-      description: 'Process 1 video or 100 — LuminaCore was designed for high-volume workflows.',
+      description: 'Process 1 video or 100 - LuminaCore was designed for high-volume workflows.',
     },
   ];
 

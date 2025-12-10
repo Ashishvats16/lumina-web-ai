@@ -15,7 +15,7 @@ export default function SolutionsPage() {
       <MarketingSection />
       <TrainingSection />
       <FutureVisionSection />
-      <SolutionsCTA />
+      {/* <SolutionsCTA /> */}
     </main>
   );
 }

@@ -3,9 +3,19 @@
 import Image from "next/image";
 import { Play, Smile, Clapperboard, Zap, Star } from "lucide-react";
 import vidImg from "@/public/assets/icons/demo1.jpg";
-import img1 from "@/public/assets/icons/demo2.jpg";
-import leftimg from "@/public/assets/icons/card 1.svg";
-import rightimg from "@/public/assets/icons/card 2.svg";
+import leftimg from "@/public/assets/icons/snapchat video.svg";
+import centerleft from "@/public/assets/icons/tik tok video.svg";
+import centerImg from "@/public/assets/icons/twitterSh.svg";
+import centerright from "@/public/assets/icons/youtube shorts video.svg";
+import rightimg from "@/public/assets/icons/Frame 33.svg";
+
+import twitterIcon from "@/public/assets/icons/X icon.svg";
+import reelicon from "@/public/assets/icons/instagram reel icon.svg";
+
+import ytIcon from "@/public/assets/icons/youtube shorts icon.svg";
+import snapicon from "@/public/assets/icons/snapchat icon (1).svg";
+import tiktokIcon from "@/public/assets/icons/tik tok icon.svg";
+
 
 export default function HeroCTA() {
   return (
@@ -87,77 +97,119 @@ export default function HeroCTA() {
                   <div className="rounded-3xl overflow-hidden shadow-lg border-4 border-white w-16 sm:w-28 lg:w-36 h-24 sm:h-40 lg:h-52 bg-gradient-to-br from-purple-500 via-pink-500 to-red-500 ">
                     <Image
                       src={leftimg}
-                      alt="Content card left"
+                      alt="snapchat-card-left"
                       width={300}
                       height={400}
                       className="w-full h-full object-cover opacity-90"
                     />
                   </div>
-                  <div className="absolute -top-2 -right-2 bg-yellow-400 rounded-full p-1.5 sm:p-2 shadow-lg">
-                    <Smile className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-600" />
-                  </div>
+              <div className="absolute sm:-top-8 lg:-top-8 -top-10 left-1/2 -translate-x-1/2 rounded-full
+                p-2">
+  <Image
+    src={snapicon}
+    alt="IG reel badge"
+    width={48}        // Intrinsic size (crisper on all screens)
+    height={48}
+    className="w-16 h-16 sm:w-12 sm:h-12 md:w-14 md:h-14"
+  />
+</div>
                 </div>
 
                 {/* Center-left card */}
                 <div className="relative -bottom-6 sm:-bottom-16  lg:-bottom-16 ">
                   <div className="rounded-3xl overflow-hidden shadow-lg border-4 border-white w-16 sm:w-28 lg:w-36 h-24 sm:h-40 lg:h-52 bg-gradient-to-br from-purple-500 via-pink-500 to-red-500">
                     <Image
-                      src="https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2"
-                      alt="Content card center-left"
+                      src={centerleft}
+                      alt="tiktok-card-center-left"
                       width={300}
                       height={400}
                       className="w-full h-full object-cover opacity-90"
                     />
                   </div>
-                  <div className="absolute -top-2 -left-2 bg-purple-600 rounded-full p-1.5 sm:p-2 shadow-lg">
-                    <Clapperboard className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                  </div>
+                <div className="absolute sm:-top-8 lg:-top-8 -top-10 left-1/2 -translate-x-1/2 rounded-full
+                p-2">
+  <Image
+    src={tiktokIcon}
+    alt="IG reel badge"
+    width={48}        // Intrinsic size (crisper on all screens)
+    height={48}
+    className="w-16 h-16 sm:w-12 sm:h-12 md:w-14 md:h-14"
+  />
+</div>
                 </div>
 
                 {/* Center card */}
-                <div className="relative -bottom-20 sm:-bottom-36 lg:-bottom-40">
-                  <div className=" rounded-3xl overflow-hidden shadow-xl border-4 sm:border-6 border-white w-16 sm:w-32 lg:w-40 h-28 sm:h-48 lg:h-60">
+                <div className="relative -bottom-20 sm:-bottom-36 lg:-bottom-40  ">
+                  <div className=" rounded-3xl overflow-hidden shadow-xl border-4 sm:border-6 border-white w-16 sm:w-32 lg:w-40 h-28 sm:h-48 lg:h-60  ">
                     <Image
-                      src={img1}
+                      src={centerImg}
                       alt="Content card center"
                       width={400}
                       height={600}
                       className="w-full h-full object-cover"
                     />
                   </div>
+                  <div className="absolute sm:-top-8 lg:-top-8 -top-10 left-1/2 -translate-x-1/2 rounded-full
+                p-2">
+  <Image
+    src={twitterIcon}
+    alt="IG reel badge"
+    width={48}        // Intrinsic size (crisper on all screens)
+    height={48}
+    className="w-16 h-16 sm:w-12 sm:h-12 md:w-14 md:h-14"
+  />
+</div>
                 </div>
 
                 {/* Center-right card */}
                 <div className="relative -bottom-6 sm:-bottom-12 lg:-bottom-12 ">
                   <div className="rounded-3xl overflow-hidden shadow-lg border-4 border-white w-16 sm:w-28 lg:w-36 h-24 sm:h-40 lg:h-52 bg-gradient-to-br from-purple-500 via-pink-500 to-red-500 ">
                     <Image
-                      src="https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2"
+                      src={centerright}
                       alt="Content card center-right"
                       width={300}
                       height={400}
                       className="w-full h-full object-cover opacity-90"
                     />
                   </div>
-                  <div className="absolute -top-2 -right-2 bg-red-500 rounded-full p-1.5 sm:p-2 shadow-lg">
-                    <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                  </div>
+           <div className="absolute sm:-top-8 lg:-top-8 -top-10 left-1/2 -translate-x-1/2 rounded-full
+                p-2">
+  <Image
+    src={ytIcon}
+    alt="IG reel badge"
+    width={48}        // Intrinsic size (crisper on all screens)
+    height={48}
+    className="w-16 h-16 sm:w-12 sm:h-12 md:w-14 md:h-14"
+  />
+</div>
+
                 </div>
 
                 {/* Right card */}
-                <div className="relative animate-pulse bottom-8 sm:bottom-8 lg:bottom-12">
-                  <div className="rounded-3xl overflow-hidden shadow-lg border-4 border-white w-16 sm:w-28 lg:w-36 h-24 sm:h-40 lg:h-52 bg-gradient-to-br from-purple-500 via-pink-500 to-red-500 ">
-                    <Image
-                      src={rightimg}
-                      alt="Content card right"
-                      width={300}
-                      height={400}
-                      className="w-full h-full object-cover opacity-90"
-                    />
-                  </div>
-                  <div className="absolute -top-2 -left-2 bg-orange-500 rounded-full p-1.5 sm:p-2 shadow-lg">
-                    <Star className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                  </div>
-                </div>
+               <div className="relative animate-pulse bottom-8 sm:bottom-8 lg:bottom-12">
+  <div className="rounded-3xl overflow-hidden shadow-lg border-4 border-white w-16 sm:w-28 lg:w-36 h-24 sm:h-40 lg:h-52 bg-gradient-to-br from-purple-500 via-pink-500 to-red-500 ">
+    <Image
+      src={rightimg}
+      alt="Content card right"
+      width={300}
+      height={400}
+      className="w-full h-full object-cover opacity-90"
+    />
+  </div>
+
+<div className="absolute sm:-top-8 lg:-top-8 -top-10 left-1/2 -translate-x-1/2 rounded-full
+                p-2">
+  <Image
+    src={reelicon}
+    alt="IG reel badge"
+    width={48}        // Intrinsic size (crisper on all screens)
+    height={48}
+    className="w-16 h-16 sm:w-12 sm:h-12 md:w-14 md:h-14"
+  />
+</div>
+
+</div>
+
               </div>
             </div>
           </div>

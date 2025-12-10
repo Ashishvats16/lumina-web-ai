@@ -6,7 +6,6 @@ import { COLORS } from "@/constants";
 import img1 from "../../public/assets/icons/card 1.svg";
 import img2 from "../../public/assets/icons/card 2.svg";
 import img3 from "../../public/assets/icons/card 3.svg";
-import logo from "../../public/assets/icons/luminaLogo.jpg";
 import Image from "next/image";
 
 interface VideoCardProps {
@@ -84,7 +83,6 @@ export default function HeroSection() {
 
       <div className="max-w-7xl mx-auto">
         <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-700 px-3 py-1.5 my-4 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
-         <Sparkles className="w-4 h-4 flex-shrink-0" />
           <span>AI-Powered Video Intelligence</span>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-[60%_38%] gap-8 lg:gap-12 items-center">
@@ -109,12 +107,11 @@ export default function HeroSection() {
 
 
             <p className=" font-inter font-normal text-[18px] leading-[27px] tracking-[0.08em] text-gray-600 min-w-fit sm:min-w-fit lg:min-w-[80%] max-w-md mx-auto lg:mx-0 mb-8 sm:mb-10 text-center lg:text-left">
-              LuminaCore AI transforms webinars, trainings, podcasts, and events into ready-to-publish clips, captions, summaries, and multilingual subtitles — so your team ships more content with less effort.
+              LuminaCore AI transforms webinars, trainings, podcasts, and events into ready-to-publish clips, captions, summaries, and multilingual subtitles - so your team ships more content with less effort.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-4 justify-center lg:justify-start">
               <button className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white text-base font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
-         <Sparkles className="w-4 h-4 flex-shrink-0" />
 
                 Get early access
               </button>

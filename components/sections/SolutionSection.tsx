@@ -8,16 +8,12 @@ function SolutionCTA() {
       <div className="relative max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-sm font-medium mb-6">
-            <Sparkles className="w-4 h-4" />
             The LuminaCore Solution
           </div>
 
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             From one <span className="text-blue-600 relative inline-block">
               long video
-              <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 200 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1 5.5C50 2.5 150 2.5 199 5.5" stroke="#3B82F6" strokeWidth="3" strokeLinecap="round"/>
-              </svg>
             </span> to a<br className="hidden sm:block" /> complete content kit.
           </h2>
 
@@ -153,7 +149,7 @@ function SolutionCTA() {
         <div className="text-center">
           <div className="inline-block bg-white rounded-2xl px-8 py-6 shadow-lg border border-gray-200">
             <p className="text-lg text-gray-700 font-medium">
-              All in <span className="text-blue-600 font-semibold">minutes, not weeks</span> — with your brand voice and style baked in.
+              All in <span className="text-blue-600 font-semibold">minutes, not weeks</span> - with your brand voice and style baked in.
             </p>
           </div>
         </div>

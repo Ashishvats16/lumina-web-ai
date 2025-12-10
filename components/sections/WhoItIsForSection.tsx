@@ -8,7 +8,7 @@ const audiences = [
     icon: Video,
     emoji: "🎥",
     title: "Creators & Solo Founders",
-    description: "Turn every video into a week of content. Stop spending hours editing — focus on creating.",
+    description: "Turn every video into a week of content. Stop spending hours editing - focus on creating.",
     color: "primary",
   },
   {
@@ -37,7 +37,11 @@ export function AudienceSection() {
 
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-center mb-16">
-          <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-4">Who It's For</p>
+          {/* <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-4">Who It's For</p> */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-sm font-medium mb-6">
+            Who It's For
+          </div>
+
           <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl text-balance">
             Designed for teams who <span className="text-gradient">live on video</span>
           </h2>

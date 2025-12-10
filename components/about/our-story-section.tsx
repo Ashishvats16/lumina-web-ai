@@ -39,11 +39,11 @@ export function OurStorySection() {
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
                     LuminaCore AI was founded by <span className="font-semibold text-foreground">Vikas Sinsinwar</span>,
-                    a technologist with 19+ years of experience building large-scale systems — including over seven
+                    a technologist with 19+ years of experience building large-scale systems - including over seven
                     years at Netflix working on global content workflows.
                   </p>
                   <p>
-                    At Netflix, Vikas saw firsthand how powerful video can be — and how much work it takes to make it
+                    At Netflix, Vikas saw firsthand how powerful video can be - and how much work it takes to make it
                     usable across regions, languages, and platforms. LuminaCore AI is the result: a platform that makes
                     video easier to reuse, understand, and scale.
                   </p>
